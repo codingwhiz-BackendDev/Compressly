@@ -1,14 +1,8 @@
 {
   "builds": [
-    {
-      "src": "Compressly/wsgi.py",
-      "use": "@vercel/python"
-    }
+    { "src": "api/index.py", "use": "@vercel/python" }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "Compressly/wsgi.py"
-    }
+    { "src": "/(.*)", "dest": "api/index.py" }
   ]
 }
