@@ -1,0 +1,534 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compressly — Smart Image Compression for Students</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'index.css' %}">
+
+</head>
+
+<body>
+  <div class="bg-mesh"></div>
+  <div class="bg-grid"></div>
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 no-underline">
+        <div
+          class="w-8 h-8 rounded-lg bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center text-white font-bold text-sm shadow-lg"
+          style="box-shadow:0 0 16px rgba(14,165,233,0.5)">C</div>
+        <span class="font-syne font-bold text-white text-lg tracking-tight">Compressly</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#features" class="text-sm text-slate-400 hover:text-white transition-colors">Features</a>
+        <a href="#how" class="text-sm text-slate-400 hover:text-white transition-colors">How it Works</a>
+        <a href="#tool" class="btn-primary text-sm py-2 px-5 glow-btn">Start Compressing</a>
+      </div>
+      <a href="#tool" class="md:hidden btn-primary text-sm py-2 px-4">Try Now</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative z-10 pt-36 pb-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="badge mb-6 fade-up fade-up-1">✦ Built for Nigerian Students</div>
+      <h1 class="hero-title text-5xl md:text-7xl text-white mb-6 fade-up fade-up-1">
+        Compress Images for<br /><span class="gradient-text">JAMB, WAEC & Uni Portals</span>
+      </h1>
+      <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed fade-up fade-up-2">
+        Stop getting rejected by university portals. Compressly instantly reduces your photo to the exact file size and
+        dimensions required — for free, in seconds, right in your browser.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center fade-up fade-up-3">
+        <a href="#tool" class="btn-primary glow-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+          Compress My Photo
+        </a>
+        <a href="#features" class="btn-ghost">See Features →</a>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-6 mt-12 text-sm text-slate-500 fade-up fade-up-3">
+        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> No sign-up required</span>
+        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> 100% browser-based</span>
+        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> JAMB/WAEC presets</span>
+        <span class="flex items-center gap-2"><span class="text-green-400">✓</span> Batch compression</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section class="relative z-10 py-8 px-6">
+    <div class="max-w-4xl mx-auto glass p-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="text-center">
+          <div class="font-syne font-bold text-3xl text-white">20KB</div>
+          <div class="text-xs text-slate-500 mt-1 uppercase tracking-widest">JAMB/WAEC Limit</div>
+        </div>
+        <div class="text-center">
+          <div class="font-syne font-bold text-3xl text-white">50KB</div>
+          <div class="text-xs text-slate-500 mt-1 uppercase tracking-widest">Uni Admission</div>
+        </div>
+        <div class="text-center">
+          <div class="font-syne font-bold text-3xl gradient-text">98%</div>
+          <div class="text-xs text-slate-500 mt-1 uppercase tracking-widest">Max Reduction</div>
+        </div>
+        <div class="text-center">
+          <div class="font-syne font-bold text-3xl text-white">0s</div>
+          <div class="text-xs text-slate-500 mt-1 uppercase tracking-widest">Wait Time</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TOOL SECTION ========== -->
+  <section id="tool" class="relative z-10 py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="section-label mb-3">The Tool</div>
+        <h2 class="font-syne font-bold text-4xl text-white">Smart Compression Studio</h2>
+        <p class="text-slate-400 mt-3">Upload once — resize, compress, convert, download.</p>
+      </div>
+
+      <!-- Tabs: Single / Batch -->
+      <div
+        class="flex items-center justify-center gap-2 mb-8 p-1 rounded-xl bg-white/5 w-fit mx-auto border border-white/10">
+        <button class="tab-btn active" id="tab-single" onclick="switchTab('single')">Single Image</button>
+        <button class="tab-btn" id="tab-batch" onclick="switchTab('batch')">Batch Compress</button>
+      </div>
+
+      <!-- SINGLE IMAGE TAB -->
+      <div id="panel-single">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+
+          <!-- LEFT: Upload + Settings -->
+          <div class="lg:col-span-2 space-y-5">
+            <!-- Drop Zone -->
+            <div class="glass p-5">
+              <div class="drop-zone p-10 text-center" id="dropZone"
+                onclick="document.getElementById('fileInput').click()">
+                <input type="file" id="fileInput" accept="image/*" class="hidden"
+                  onchange="handleFileSelect(this.files)" />
+                <div class="relative w-16 h-16 mx-auto mb-5 float-icon">
+                  <div
+                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-sky-500/20 to-sky-700/20 border border-sky-500/30 flex items-center justify-center">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5">
+                      <rect x="3" y="3" width="18" height="18" rx="3" />
+                      <circle cx="8.5" cy="8.5" r="1.5" />
+                      <polyline points="21 15 16 10 5 21" />
+                    </svg>
+                  </div>
+                </div>
+                <p class="text-white font-semibold mb-1">Drop your image here</p>
+                <p class="text-slate-500 text-sm mb-4">or click to browse</p>
+                <div class="flex flex-wrap gap-2 justify-center">
+                  <span class="fmt-tag">JPG</span><span class="fmt-tag">PNG</span><span class="fmt-tag">WEBP</span>
+                </div>
+                <p class="text-slate-600 text-xs mt-3">Max 20MB</p>
+              </div>
+            </div>
+
+            <!-- Passport Presets -->
+            <div class="glass p-5">
+              <p class="section-label mb-3">Quick Presets</p>
+              <div class="space-y-2">
+                <button class="preset-pill w-full" id="preset-none" onclick="applyPreset('none')">
+                  <span class="text-slate-400">⊘</span>
+                  <div>
+                    <div class="font-medium text-sm">No Preset</div>
+                    <div class="text-xs text-slate-500">Custom settings</div>
+                  </div>
+                </button>
+                <button class="preset-pill w-full" id="preset-waec_jamb" onclick="applyPreset('waec_jamb')">
+                  <span>🎓</span>
+                  <div>
+                    <div class="font-medium text-sm">WAEC / JAMB</div>
+                    <div class="text-xs text-slate-500">150×200px • Max 20KB • JPG</div>
+                  </div>
+                </button>
+                <button class="preset-pill w-full" id="preset-university" onclick="applyPreset('university')">
+                  <span>🏫</span>
+                  <div>
+                    <div class="font-medium text-sm">University Admission</div>
+                    <div class="text-xs text-slate-500">300×400px • Max 50KB • JPG</div>
+                  </div>
+                </button>
+                <button class="preset-pill w-full" id="preset-job" onclick="applyPreset('job')">
+                  <span>💼</span>
+                  <div>
+                    <div class="font-medium text-sm">Job Application</div>
+                    <div class="text-xs text-slate-500">200×200px • Max 100KB • JPG</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="glass p-5 space-y-5">
+              <p class="section-label">Compression Settings</p>
+
+              <!-- Target Size -->
+              <div>
+                <label class="text-xs text-slate-400 font-medium uppercase tracking-wider mb-2 block">Target File
+                  Size</label>
+                <div class="flex gap-2 flex-wrap mb-2">
+                  <button class="size-btn" id="sz-20" onclick="setTargetSize(20)">20 KB</button>
+                  <button class="size-btn" id="sz-50" onclick="setTargetSize(50)">50 KB</button>
+                  <button class="size-btn" id="sz-100" onclick="setTargetSize(100)">100 KB</button>
+                  <button class="size-btn active" id="sz-0" onclick="setTargetSize(0)">Auto</button>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input type="number" id="customSizeInput" placeholder="Custom KB" min="1" max="10000" class="flex-1"
+                    oninput="setTargetSize(+this.value||0,true)" />
+                  <span class="text-xs text-slate-500">KB</span>
+                </div>
+              </div>
+
+              <!-- Quality -->
+              <div id="qualityBlock">
+                <label class="text-xs text-slate-400 font-medium uppercase tracking-wider mb-2 flex justify-between">
+                  <span>Quality</span><span id="qualityVal" class="text-sky-400">85%</span>
+                </label>
+                <input type="range" min="10" max="100" value="85" id="qualitySlider"
+                  oninput="document.getElementById('qualityVal').textContent=this.value+'%'" />
+              </div>
+
+              <!-- Resize -->
+              <div>
+                <label class="text-xs text-slate-400 font-medium uppercase tracking-wider mb-2 block">Resize
+                  (optional)</label>
+                <div class="grid grid-cols-2 gap-2">
+                  <div><input type="number" id="resizeW" placeholder="Width px" min="1" max="5000" /></div>
+                  <div><input type="number" id="resizeH" placeholder="Height px" min="1" max="5000" /></div>
+                </div>
+                <label class="flex items-center gap-2 mt-2 cursor-pointer">
+                  <input type="checkbox" id="proportional" checked class="accent-sky-500" />
+                  <span class="text-xs text-slate-400">Keep proportions</span>
+                </label>
+              </div>
+
+              <!-- Format -->
+              <div>
+                <label class="text-xs text-slate-400 font-medium uppercase tracking-wider mb-2 block">Output
+                  Format</label>
+                <select id="formatSelect">
+                  <option value="auto">Keep original</option>
+                  <option value="jpg">Convert to JPG</option>
+                  <option value="png">Convert to PNG</option>
+                  <option value="webp">Convert to WebP</option>
+                </select>
+              </div>
+
+              <!-- Compress Button -->
+              <button class="btn-primary w-full justify-center glow-btn py-3" id="compressBtn"
+                onclick="compressSingle()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                  <path d="M2 17l10 5 10-5" />
+                  <path d="M2 12l10 5 10-5" />
+                </svg>
+                Compress Now
+              </button>
+            </div>
+          </div>
+
+          <!-- RIGHT: Preview + Results -->
+          <div class="lg:col-span-3 space-y-5">
+            <!-- Upload prompt (empty state) -->
+            <div id="emptyState" class="glass p-12 text-center h-full flex flex-col items-center justify-center"
+              style="min-height:400px">
+              <div
+                class="w-20 h-20 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center mx-auto mb-5">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="1.2">
+                  <rect x="3" y="3" width="18" height="18" rx="3" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <polyline points="21 15 16 10 5 21" />
+                </svg>
+              </div>
+              <p class="text-slate-500 font-medium">No image uploaded yet</p>
+              <p class="text-slate-600 text-sm mt-2">Upload an image to see compression results here</p>
+            </div>
+
+            <!-- Loading -->
+            <div id="loadingState" class="glass p-12 text-center hidden"
+              style="min-height:400px; display:none; align-items:center; justify-content:center; flex-direction:column;">
+              <div class="spinner mx-auto mb-5"></div>
+              <p class="text-slate-400 font-medium">Compressing your image…</p>
+              <div class="progress-bar w-64 mx-auto mt-4">
+                <div class="progress-fill" id="loadProgress" style="width:0%"></div>
+              </div>
+            </div>
+
+            <!-- Results -->
+            <div id="resultsState" class="hidden space-y-5">
+              <!-- Stats -->
+              <div class="grid grid-cols-3 gap-3">
+                <div class="stat-card">
+                  <div class="val text-slate-300" id="statOriginal">—</div>
+                  <div class="lbl">Original</div>
+                </div>
+                <div class="stat-card">
+                  <div class="val text-sky-400" id="statCompressed">—</div>
+                  <div class="lbl">Compressed</div>
+                </div>
+                <div class="stat-card">
+                  <div class="val text-green-400" id="statReduction">—</div>
+                  <div class="lbl">Reduction</div>
+                </div>
+              </div>
+
+              <!-- Compare -->
+              <div class="glass p-5">
+                <div class="flex items-center justify-between mb-4">
+                  <p class="text-sm font-semibold text-white">Before vs After</p>
+                  <div class="success-badge" id="dimBadge">—</div>
+                </div>
+                <div class="compare-wrap" id="compareWrap" style="height:300px">
+                  <img id="compareOrigImg" style="width:100%;height:100%;object-fit:contain;display:block;" />
+                  <div class="compare-after" id="compareAfterEl">
+                    <img id="compareCompImg"
+                      style="width:100%;height:100%;object-fit:contain;display:block;position:absolute;top:0;left:0;" />
+                  </div>
+                  <div class="compare-divider" id="compareDivider" style="left:50%"></div>
+                  <div class="compare-handle" id="compareHandle" style="left:50%">⟺</div>
+                  <span class="compare-label" style="left:8px">Before</span>
+                  <span class="compare-label" style="right:8px">After</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-2 text-center">← Drag the slider to compare →</p>
+              </div>
+
+              <!-- Download -->
+              <div class="glass p-5 flex items-center justify-between">
+                <div>
+                  <p class="font-semibold text-white" id="dlFilename">compressed_image.jpg</p>
+                  <p class="text-sm text-slate-400" id="dlInfo">Ready to download</p>
+                </div>
+                <a id="downloadBtn" class="btn-accent glow-btn" href="#" download>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Download
+                </a>
+              </div>
+
+              <!-- Compress another -->
+              <button class="btn-ghost w-full justify-center" onclick="resetTool()">Upload another image</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BATCH TAB -->
+      <div id="panel-batch" class="hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          <div class="lg:col-span-2 space-y-5">
+            <div class="glass p-5">
+              <div class="drop-zone p-10 text-center" id="batchDropZone"
+                onclick="document.getElementById('batchInput').click()">
+                <input type="file" id="batchInput" accept="image/*" multiple class="hidden"
+                  onchange="handleBatchSelect(this.files)" />
+                <div class="float-icon mb-4">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.2">
+                    <rect x="2" y="6" width="16" height="14" rx="2" />
+                    <path d="M6 6V4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2" />
+                  </svg>
+                </div>
+                <p class="text-white font-semibold mb-1">Drop multiple images</p>
+                <p class="text-slate-500 text-sm">Up to 20 files at once</p>
+              </div>
+            </div>
+
+            <div class="glass p-5 space-y-4">
+              <p class="section-label">Batch Settings</p>
+              <div>
+                <label class="text-xs text-slate-400 font-medium uppercase tracking-wider mb-2 block">Preset</label>
+                <select id="batchPreset">
+                  <option value="">Custom settings</option>
+                  <option value="waec_jamb">WAEC / JAMB (150×200, 20KB)</option>
+                  <option value="university">University (300×400, 50KB)</option>
+                  <option value="job">Job Application (200×200, 100KB)</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-xs text-slate-400 font-medium uppercase tracking-wider mb-2 flex justify-between">
+                  <span>Quality</span><span id="batchQualVal" class="text-sky-400">85%</span>
+                </label>
+                <input type="range" min="20" max="100" value="85" id="batchQualSlider"
+                  oninput="document.getElementById('batchQualVal').textContent=this.value+'%'" />
+              </div>
+              <div>
+                <label class="text-xs text-slate-400 font-medium uppercase tracking-wider mb-2 block">Target Size
+                  (KB)</label>
+                <input type="number" id="batchTargetKb" value="100" min="1" max="10000" placeholder="100" />
+              </div>
+              <button class="btn-primary w-full justify-center glow-btn" onclick="runBatch()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                  <path d="M2 17l10 5 10-5" />
+                  <path d="M2 12l10 5 10-5" />
+                </svg>
+                Compress All
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-3">
+            <div class="glass p-5">
+              <div class="flex items-center justify-between mb-4">
+                <p class="font-semibold text-white">Batch Queue</p>
+                <span class="text-xs text-slate-500" id="batchCount">0 files</span>
+              </div>
+              <div id="batchOverallProgress" class="hidden mb-4">
+                <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
+                  <span id="batchProgressLabel">Processing…</span>
+                  <span id="batchProgressPct">0%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" id="batchProgressBar" style="width:0%"></div>
+                </div>
+              </div>
+              <div id="batchList" class="space-y-2 max-h-96 overflow-y-auto">
+                <div class="text-center py-12 text-slate-600">
+                  <p class="text-4xl mb-3">🗂</p>
+                  <p class="text-sm">No files queued yet</p>
+                </div>
+              </div>
+              <div id="batchDownloadAll" class="hidden mt-4">
+                <button class="btn-accent w-full justify-center" onclick="downloadAllBatch()">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Download All as ZIP
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="relative z-10 py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <div class="section-label mb-3">Features</div>
+        <h2 class="font-syne font-bold text-4xl text-white">Everything you need</h2>
+        <p class="text-slate-400 mt-3 max-w-xl mx-auto">No watermarks. No limits. No account needed. Just fast, smart
+          compression.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3 class="font-syne font-bold text-white text-lg mb-2">Target File Size</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Set an exact KB target — 20KB, 50KB, or custom. Our
+            algorithm binary-searches the ideal quality setting to hit it.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📐</div>
+          <h3 class="font-syne font-bold text-white text-lg mb-2">Smart Resize</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Set exact width/height or let us auto-resize proportionally.
+            Never get a distorted passport photo again.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3 class="font-syne font-bold text-white text-lg mb-2">Format Conversion</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Convert PNG to JPG, JPG to WebP, or keep the original.
+            Portals often require specific formats.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎓</div>
+          <h3 class="font-syne font-bold text-white text-lg mb-2">Passport Presets</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">One click for JAMB, WAEC, university admission, and job
+            portals. Settings pre-filled, just compress and download.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3 class="font-syne font-bold text-white text-lg mb-2">Browser-First Speed</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Compression runs in your browser via Canvas API — no waiting
+            for uploads. Instant results on any device.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <h3 class="font-syne font-bold text-white text-lg mb-2">Batch Compression</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Upload 20 images at once. Apply the same preset to all and
+            download as a ZIP in one click.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="relative z-10 py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <div class="section-label mb-3">How It Works</div>
+        <h2 class="font-syne font-bold text-4xl text-white">Three steps to upload success</h2>
+      </div>
+      <div class="space-y-6">
+        <div class="glass p-6 flex items-start gap-5">
+          <div class="step-num">1</div>
+          <div>
+            <h3 class="font-syne font-bold text-white text-lg mb-1">Upload your image</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Drag and drop or click to browse. Supports JPG, PNG, and
+              WebP up to 20MB. Your image never leaves your device until you choose server compression.</p>
+          </div>
+        </div>
+        <div class="glass p-6 flex items-start gap-5">
+          <div class="step-num">2</div>
+          <div>
+            <h3 class="font-syne font-bold text-white text-lg mb-1">Choose your settings or preset</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Pick a portal preset (JAMB, WAEC, university) or dial in
+              custom size, quality, dimensions, and format. Our algorithm finds the optimal compression automatically.
+            </p>
+          </div>
+        </div>
+        <div class="glass p-6 flex items-start gap-5">
+          <div class="step-num">3</div>
+          <div>
+            <h3 class="font-syne font-bold text-white text-lg mb-1">Download & upload to your portal</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Get your compressed image instantly. Compare before/after,
+              then download. Your portal will accept it — guaranteed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="relative z-10 py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <div
+            class="w-7 h-7 rounded-lg bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center text-white font-bold text-xs">
+            C</div>
+          <span class="font-syne font-bold text-white">Compressly</span>
+        </div>
+        <p class="text-slate-500 text-sm">Built for Nigerian students. Compress confidently.</p>
+        <p class="text-slate-600 text-xs">© 2025 Compressly. Free forever.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JSZip for batch download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <script src="{% static 'index.js' %}"></script>
+</body>
+
+</html>
