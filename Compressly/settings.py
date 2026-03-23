@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = 'django-insecure-Compressly-dev-key-change-in-production'
+SECRET_KEY = 'django-insecure-k)g1y2#@at#=mu0-=q$s1s&w)j2c3%c8#0x-pa4yvdi9s^(6&^'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
